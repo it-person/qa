@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: dbmasterusername
+  password: dbmasterpassword
+  host: localhost
+
+development:
+  <<: *default
+  database: qa_development
+
+test:
+  <<: *default
+  database: qa_test
+
+production:
+  <<: *default
+  database: qa_production
+  username: qa
+  password: <%= ENV['QA_DATABASE_PASSWORD'] %>
